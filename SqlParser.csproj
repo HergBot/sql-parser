@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="SqlParser_Tests\**" />
+    <EmbeddedResource Remove="SqlParser_Tests\**" />
+    <None Remove="SqlParser_Tests\**" />
+  </ItemGroup>
+
+</Project>
