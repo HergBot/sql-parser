@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using System.Linq;
+
+using NUnit.Framework;
 
 using SqlParser.Data.MySQL;
 
@@ -44,12 +47,6 @@ namespace SqlParser_Tests
                 PRIMARY KEY ({COLUMN_ONE}, {COLUMN_TWO})
             );";
 
-        [SetUp]
-        protected void SetUp()
-        {
-
-        }
-
         [Test]
         public void Parse_FullTable()
         {
@@ -87,6 +84,41 @@ namespace SqlParser_Tests
             Assert.IsTrue(table.PrimaryKeys.Contains(COLUMN_ONE));
             Assert.IsTrue(table.PrimaryKeys.Contains(COLUMN_TWO));
             Assert.AreEqual(0, table.ForeignKeys.Count);
+        }
+
+        [Test]
+        public void GetDependencies_NoDependencies()
+        {
+            Dictionary<string, Column> columns = new Dictionary<string, Column>();
+            columns.Add(COLUMN_ONE, new Column() { Name = COLUMN_ONE, Type = new DataType() { Type = DataTypes.INT } });
+            Table table = new Table(TABLE_NAME, columns, new HashSet<string>() { COLUMN_ONE }, new Dictionary<string, ForeignKey>());
+            Assert.IsFalse(table.GetDependencies().Any());
+        }
+
+        [Test]
+        public void GetDependencies_Dependencies()
+        {
+            Dictionary<string, Column> columns = new Dictionary<string, Column>();
+            columns.Add(COLUMN_ONE, new Column() { Name = COLUMN_ONE, Type = new DataType() { Type = DataTypes.INT } });
+            Dictionary<string, ForeignKey> foreignKeys = new Dictionary<string, ForeignKey>();
+            foreignKeys.Add(COLUMN_ONE, new ForeignKey() { LocalColumn = COLUMN_ONE, ForeignTable = PARENT_TABLE_NAME, ForeignColumn = PARENT_COLUMN_NAME });
+            Table table = new Table(TABLE_NAME, columns, new HashSet<string>() { COLUMN_ONE }, foreignKeys);
+            Assert.IsTrue(table.GetDependencies().Any());
+            Assert.AreEqual(1, table.GetDependencies().Count());
+        }
+
+        [Test]
+        public void GetDependencies_DuplicateDependencies()
+        {
+            Dictionary<string, Column> columns = new Dictionary<string, Column>();
+            columns.Add(COLUMN_ONE, new Column() { Name = COLUMN_ONE, Type = new DataType() { Type = DataTypes.INT } });
+            columns.Add(COLUMN_TWO, new Column() { Name = COLUMN_TWO, Type = new DataType() { Type = DataTypes.INT } });
+            Dictionary<string, ForeignKey> foreignKeys = new Dictionary<string, ForeignKey>();
+            foreignKeys.Add(COLUMN_ONE, new ForeignKey() { LocalColumn = COLUMN_ONE, ForeignTable = PARENT_TABLE_NAME, ForeignColumn = PARENT_COLUMN_NAME });
+            foreignKeys.Add(COLUMN_TWO, new ForeignKey() { LocalColumn = COLUMN_TWO, ForeignTable = PARENT_TABLE_NAME, ForeignColumn = PARENT_COLUMN_NAME });
+            Table table = new Table(TABLE_NAME, columns, new HashSet<string>() { COLUMN_ONE }, foreignKeys);
+            Assert.IsTrue(table.GetDependencies().Any());
+            Assert.AreEqual(1, table.GetDependencies().Count());
         }
 
         private void ColumnExpected(Column column, string name, DataType type, bool nullable = true, bool autoIncrement = false)

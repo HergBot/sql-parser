@@ -1,11 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//
+// FILE     : DataType.cs
+// PROJECT  : SQL Parser
+// AUTHOR   : xHergz
+// DATE     : 2021-03-10
+// 
+
+using System;
 
 namespace SqlParser.Data.MySQL
 {
+    /// <summary>
+    /// A list of most of the MySQL Data Types
+    /// </summary>
     public enum DataTypes
     {
         TINYINT,
@@ -34,12 +40,28 @@ namespace SqlParser.Data.MySQL
         SET,
     }
 
+    /// <summary>
+    /// Holds the information for a MySQL data type
+    /// </summary>
     public class DataType
     {
+        /// <summary>
+        /// The MySQL data type
+        /// </summary>
         public DataTypes Type { get; set; }
 
+        /// <summary>
+        /// The size if applicable to the type
+        /// </summary>
         public int? Size { get; set; }
 
+        /// <summary>
+        /// Parses a MySQL data type
+        /// </summary>
+        /// <param name="text">The data type text</param>
+        /// <returns>The MySQL data type</returns>
+        /// <exception cref="ArgumentNullException">When the text is null</exception>
+        /// <exception cref="ArgumentException">When the text is empty, whitespace, or is an invalid type</exception>
         public static DataType Parse(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
@@ -72,6 +94,10 @@ namespace SqlParser.Data.MySQL
             };
         }
 
+        /// <summary>
+        /// Creates a unique hash code for the type and size
+        /// </summary>
+        /// <returns>The unique hash code</returns>
         public override int GetHashCode()
         {
             int hash = 13;
@@ -84,6 +110,11 @@ namespace SqlParser.Data.MySQL
             return hash;
         }
 
+        /// <summary>
+        /// Determines if the given object is equal to the data type
+        /// </summary>
+        /// <param name="obj">Object to compare with</param>
+        /// <returns>True if they are equal, false otherwise</returns>
         public override bool Equals(object obj)
         {
             if (obj == null || obj.GetType() != GetType())
@@ -94,6 +125,12 @@ namespace SqlParser.Data.MySQL
             return Type == typeB.Type && Size == typeB.Size;
         }
 
+        /// <summary>
+        /// Determines if the given data types are equal
+        /// </summary>
+        /// <param name="typeA">Data type on the left side of the equation</param>
+        /// <param name="typeB">Data type on the right side of the equation</param>
+        /// <returns>True if they are equal, false otherwise</returns>
         public static bool operator == (DataType typeA, DataType typeB)
         {
             if ((object)typeA == null)
@@ -103,6 +140,12 @@ namespace SqlParser.Data.MySQL
             return typeA.Equals(typeB);
         }
 
+        /// <summary>
+        /// Determines if the given data types are unequal
+        /// </summary>
+        /// <param name="typeA">Data type on the left side of the equation</param>
+        /// <param name="typeB">Data type on the right side of the equation</param>
+        /// <returns>True if they are not equal, false otherwise</returns>
         public static bool operator != (DataType typeA, DataType typeB)
         {
             return !(typeA == typeB);
