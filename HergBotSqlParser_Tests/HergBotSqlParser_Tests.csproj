@@ -58,8 +58,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HergBotSqlParser.csproj">
-      <Project>{edab4acc-9101-4037-bfdf-f086c7fd31b0}</Project>
+    <ProjectReference Include="..\HergBotSqlParser\HergBotSqlParser.csproj">
+      <Project>{a821c0fe-8024-4705-838f-00bb09b71a99}</Project>
       <Name>HergBotSqlParser</Name>
     </ProjectReference>
   </ItemGroup>
