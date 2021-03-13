@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>HergBot.SqlParser</PackageId>
+    <Company>HergBot</Company>
+    <Product>HergBot.SqlParser</Product>
+    <Description>A parsing library for the HergBot standard of SQL files.</Description>
+    <RepositoryUrl>https://github.com/HergBot/sql-parser</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <Authors>Justin</Authors>
   </PropertyGroup>
 
   <ItemGroup>
