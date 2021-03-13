@@ -17,16 +17,16 @@ namespace SqlParser_Tests
         [Test]
         public void Parse_Valid()
         {
-            ForeignKey key = ForeignKey.Parse($"FOREIGN KEY ({LOCAL_COLUMN}) {FOREIGN_TABLE}({FOREIGN_COLUMN})");
+            ForeignKey key = ForeignKey.Parse($"FOREIGN KEY ({LOCAL_COLUMN}) REFERENCES {FOREIGN_TABLE}({FOREIGN_COLUMN})");
             Assert.AreEqual(LOCAL_COLUMN, key.LocalColumn);
             Assert.AreEqual(FOREIGN_TABLE, key.ForeignTable);
             Assert.AreEqual(FOREIGN_COLUMN, key.ForeignColumn);
         }
 
         [TestCase("")]
-        [TestCase("FOREIGN KEY () ()")]
-        [TestCase("FOREIGN KEY (Local_Field) ()")]
-        [TestCase("FOREIGN KEY (Local_Field) ForeignTable()")]
+        [TestCase("FOREIGN KEY () REFERENCES ()")]
+        [TestCase("FOREIGN KEY (Local_Field) REFERENCES ()")]
+        [TestCase("FOREIGN KEY (Local_Field) REFERENCES ForeignTable()")]
         public void Parse_Invalid(string text)
         {
             Assert.Throws<FormatException>(() => ForeignKey.Parse(text));

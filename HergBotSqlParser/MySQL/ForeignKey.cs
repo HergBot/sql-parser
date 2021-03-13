@@ -38,7 +38,7 @@ namespace HergBot.SqlParser.Data.MySQL
         /// <exception cref="FormatException">If the definition is missing a local column, foreign table, or foreign column</exception>
         public static ForeignKey Parse(string text)
         {
-            Regex pattern = new Regex(@"FOREIGN KEY\s\((?<localColumn>[_\w]+)\)\s(?<foreignTable>[_\w]+)\((?<foreignColumn>[_\w]+)\)");
+            Regex pattern = new Regex(@"FOREIGN KEY\s\((?<localColumn>[_\w]+)\)\sREFERENCES\s(?<foreignTable>[_\w]+)\((?<foreignColumn>[_\w]+)\)");
             Match match = pattern.Match(text);
             string localColumn = match.Groups["localColumn"].Value;
             string foreignTable = match.Groups["foreignTable"].Value;

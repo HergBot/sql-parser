@@ -28,7 +28,7 @@ namespace SqlParser_Tests
                 {COLUMN_TWO} INT NOT NULL,
                 {COLUMN_THREE} VARCHAR(100) NOT NULL,
                 PRIMARY KEY ({COLUMN_ONE}),
-                FOREIGN KEY ({COLUMN_TWO}) {PARENT_TABLE_NAME}({PARENT_COLUMN_NAME})
+                FOREIGN KEY ({COLUMN_TWO}) REFERENCES {PARENT_TABLE_NAME}({PARENT_COLUMN_NAME})
             );";
 
         private static string NO_FOREIGN_KEYS =
