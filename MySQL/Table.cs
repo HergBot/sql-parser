@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace SqlParser.Data.MySQL
+namespace HergBot.SqlParser.Data.MySQL
 {
     /// <summary>
     /// Holds information for a MySQL table

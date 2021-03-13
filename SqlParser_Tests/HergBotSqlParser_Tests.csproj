@@ -58,9 +58,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SqlParser.csproj">
+    <ProjectReference Include="..\HergBotSqlParser.csproj">
       <Project>{edab4acc-9101-4037-bfdf-f086c7fd31b0}</Project>
-      <Name>SqlParser</Name>
+      <Name>HergBotSqlParser</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

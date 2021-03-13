@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-using SqlParser.Data.MySQL;
+using HergBot.SqlParser.Data.MySQL;
 using System;
 
 namespace SqlParser_Tests

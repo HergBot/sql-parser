@@ -8,7 +8,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace SqlParser.Data.MySQL
+namespace HergBot.SqlParser.Data.MySQL
 {
     /// <summary>
     /// Holds the data for a foreign key constraint

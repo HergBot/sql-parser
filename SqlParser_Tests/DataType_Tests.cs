@@ -1,7 +1,8 @@
-﻿using NUnit.Framework;
+﻿using System;
 
-using SqlParser.Data.MySQL;
-using System;
+using NUnit.Framework;
+
+using HergBot.SqlParser.Data.MySQL;
 
 namespace SqlParser_Tests
 {

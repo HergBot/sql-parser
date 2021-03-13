@@ -7,7 +7,7 @@
 
 using System;
 
-namespace SqlParser.Data.MySQL
+namespace HergBot.SqlParser.Data.MySQL
 {
     /// <summary>
     /// A list of most of the MySQL Data Types

@@ -2,7 +2,7 @@
 
 using NUnit.Framework;
 
-using SqlParser.Data.MySQL;
+using HergBot.SqlParser.Data.MySQL;
 
 namespace SqlParser_Tests
 {

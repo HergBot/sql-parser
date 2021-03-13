@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlParser", "SqlParser.csproj", "{EDAB4ACC-9101-4037-BFDF-F086C7FD31B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HergBotSqlParser", "HergBotSqlParser.csproj", "{EDAB4ACC-9101-4037-BFDF-F086C7FD31B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlParser_Tests", "SqlParser_Tests\SqlParser_Tests.csproj", "{E0B9DAF0-288A-43CE-B22F-CCB5C1F30EA1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HergBotSqlParser_Tests", "SqlParser_Tests\HergBotSqlParser_Tests.csproj", "{E0B9DAF0-288A-43CE-B22F-CCB5C1F30EA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

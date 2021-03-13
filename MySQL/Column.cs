@@ -7,7 +7,7 @@
 
 using System;
 
-namespace SqlParser.Data.MySQL
+namespace HergBot.SqlParser.Data.MySQL
 {
     /// <summary>
     /// Holds the information for a SQL table column.
