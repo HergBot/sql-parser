@@ -9,6 +9,7 @@
     <RepositoryUrl>https://github.com/HergBot/sql-parser</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <Authors>Justin</Authors>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
